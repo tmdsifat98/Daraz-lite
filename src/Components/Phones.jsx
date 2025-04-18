@@ -6,18 +6,23 @@ const Phones = ({ data }) => {
   const [show, setShow] = useState(true);
   const [phoneCards, setPhoneCards] = useState([]);
   useEffect(() => {
-    if(show) return setPhoneCards(data.slice(0, 6));
-  }, [show]);
-  
+    if (show) return setPhoneCards(data.slice(0, 6));
+    setPhoneCards(data);
+  }, [data, show]);
 
   return (
     <div>
       <div className="lg:w-3/4 mx-auto grid lg:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-4 mt-14">
         {phoneCards.map((phone) => (
-          <PhoneCard phone={phone} />
+          <PhoneCard key={phone.id} phone={phone} />
         ))}
       </div>
-      <Button onClick={()=>setShow(!show)} label={show ? "Show More" : "Show Less"} />
+      <Button
+        onClick={() =>{ setShow(!show)
+          if(!show) window.scrollTo(0,500)}
+        }
+        label={show ? "Show More" : "Show Less"}
+      />
     </div>
   );
 };

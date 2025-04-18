@@ -13,7 +13,7 @@ const Navbar = () => {
       <NavLink to="/cart">
         <IoMdCart />
       </NavLink>
-      <NavLink to="/favourite">
+      <NavLink to="/favorite">
         <MdBookmarkAdd />
       </NavLink>
     </>

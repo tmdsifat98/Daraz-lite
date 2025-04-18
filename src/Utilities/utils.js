@@ -1,0 +1,18 @@
+import toast from "react-hot-toast";
+
+export const getFavorite = () => {
+  let favoriteBook = [];
+  const storedItem = localStorage.getItem("book");
+  if (storedItem) {
+    favoriteBook = JSON.parse(storedItem);
+  }
+  return favoriteBook;
+};
+export const setFavorite = (phone) => {
+  const favData = getFavorite();
+  const isExist = favData.find((b) => b.id === phone.id);
+  if (isExist) return toast.error("Book already added.")
+  favData.push(phone);
+  toast.success("Book successfully added")
+  localStorage.setItem("book", JSON.stringify(favData));
+};

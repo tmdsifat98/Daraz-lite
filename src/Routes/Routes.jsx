@@ -3,7 +3,7 @@ import Layouts from "../Layouts/Layouts";
 import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import PhoneDetails from "../Pages/PhoneDetails";
-import Favourites from "../Pages/Favourites";
+import Favorites from "../Pages/Favourites";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: "favorite",
-        Component: Favourites,
+        Component: Favorites,
       },
       { path: "*", Component: ErrorPage },
     ],

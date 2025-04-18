@@ -3,12 +3,16 @@ import { useLoaderData, useParams } from "react-router";
 import Button from "../Utilities/Button";
 import { FaCartArrowDown } from "react-icons/fa";
 import { MdBookmarkAdd } from "react-icons/md";
+import { setFavorite } from "../Utilities/utils";
 
-const PhoneDetails = ({handleFavorite}) => {
+const PhoneDetails = () => {
   const { phoneId } = useParams();
   const phones = useLoaderData();
   const singlePhone = phones.find((phone) => phone.id === parseInt(phoneId));
-  const { id,name, image, description, model, brand, storage } = singlePhone;
+  const { name, image, description, model, brand, storage } = singlePhone;
+  const handleFavorite = () => {
+    setFavorite(singlePhone);
+  };
   return (
     <div>
       <div>
@@ -21,7 +25,7 @@ const PhoneDetails = ({handleFavorite}) => {
           <h1 className="text-5xl font-semibold my-5">{name}</h1>
           <span className="flex items-center gap-4">
             <Button label={<FaCartArrowDown />} />
-            <Button onClick={()=>handleFavorite(id)} label={<MdBookmarkAdd />} />
+            <Button onClick={handleFavorite} label={<MdBookmarkAdd />} />
           </span>
         </div>
         <p className="text-4xl font-thin my-5">Details:</p>
@@ -38,8 +42,10 @@ const PhoneDetails = ({handleFavorite}) => {
             <tr>
               <td className="w-6">Storage:</td>
               <td>
-                {storage.map((s) => (
-                  <span className="block">{s}</span>
+                {storage.map((s, index) => (
+                  <span key={index} className="block">
+                    {s}
+                  </span>
                 ))}
               </td>
             </tr>

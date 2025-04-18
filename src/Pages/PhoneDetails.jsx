@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData, useParams } from "react-router";
 import Button from "../Utilities/Button";
 import { FaCartArrowDown } from "react-icons/fa";
 import { MdBookmarkAdd } from "react-icons/md";
-import { setFavorite } from "../Utilities/utils";
+import { getCart, setCart, setFavorite } from "../Utilities/utils";
+import { CartContext } from "../Providers/Context";
 
 const PhoneDetails = () => {
+  const { setAddCart } = useContext(CartContext);
   const { phoneId } = useParams();
   const phones = useLoaderData();
   const singlePhone = phones.find((phone) => phone.id === parseInt(phoneId));
   const { name, image, description, model, brand, storage } = singlePhone;
-  const handleFavorite = () => {
+
+  const handleFavorite = (singlePhone) => {
     setFavorite(singlePhone);
   };
+  const handleCart = (singlePhone) => {
+    setCart(singlePhone);
+    setAddCart(getCart());
+  };
+
   return (
     <div>
       <div>
@@ -24,8 +32,14 @@ const PhoneDetails = () => {
         <div className="flex justify-between items-center">
           <h1 className="text-5xl font-semibold my-5 w-2/3">{name}</h1>
           <span className="flex flex-col lg:flex-row items-center gap-2 lg:gap-4">
-            <Button label={<FaCartArrowDown />} />
-            <Button onClick={handleFavorite} label={<MdBookmarkAdd />} />
+            <Button
+              onClick={() => handleCart(singlePhone)}
+              label={<FaCartArrowDown />}
+            />
+            <Button
+              onClick={() => handleFavorite((prev) => [...prev, singlePhone])}
+              label={<MdBookmarkAdd />}
+            />
           </span>
         </div>
         <p className="text-4xl font-thin my-5">Details:</p>

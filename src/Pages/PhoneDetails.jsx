@@ -22,8 +22,8 @@ const PhoneDetails = () => {
           alt=""
         />
         <div className="flex justify-between items-center">
-          <h1 className="text-5xl font-semibold my-5">{name}</h1>
-          <span className="flex items-center gap-4">
+          <h1 className="text-5xl font-semibold my-5 w-2/3">{name}</h1>
+          <span className="flex flex-col lg:flex-row items-center gap-2 lg:gap-4">
             <Button label={<FaCartArrowDown />} />
             <Button onClick={handleFavorite} label={<MdBookmarkAdd />} />
           </span>

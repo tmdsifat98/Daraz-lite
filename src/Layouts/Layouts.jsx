@@ -9,7 +9,7 @@ const Layouts = () => {
   return (
     <div className="w-11/12 mx-auto">
       <Navbar />
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <Outlet />
       <Footer />
     </div>

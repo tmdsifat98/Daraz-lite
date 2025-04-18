@@ -4,7 +4,7 @@ import { Link } from "react-router";
 const PhoneCard = ({ phone }) => {
   const { name, id, image, description } = phone;
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100 shadow-sm">
       <figure>
         <img src={image} alt={name} />
       </figure>

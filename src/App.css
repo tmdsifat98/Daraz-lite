@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+ul a.active{
+  color: blueviolet;
+}

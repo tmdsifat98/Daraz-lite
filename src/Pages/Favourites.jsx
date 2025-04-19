@@ -10,8 +10,8 @@ const Favorites = () => {
     const favoritePhones = getFavorite();
     setAddPhone(favoritePhones);
   }, []);
-  const handleRemove = (id) => {
-    removeFavorite(id);
+  const handleRemove = (phone) => {
+    removeFavorite(phone);
     setAddPhone(getFavorite());
   };
   if (addPhone.length == 0)
@@ -29,7 +29,7 @@ const Favorites = () => {
         <FavItem
           key={phone.id}
           phone={phone}
-          handleRemove={handleRemove}
+          handleRemove={()=>handleRemove(phone)}
         ></FavItem>
       ))}
     </div>

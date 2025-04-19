@@ -11,12 +11,10 @@ const Phones = ({ phones }) => {
   }, [phones, show]);
 
   return (
-    <div>
-      <div className="lg:w-3/4 w-full mx-auto gap-5 grid lg:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-4 mt-14">
-        {phoneCards.map((phone) => (
-          <PhoneCard key={phone.id} phone={phone} />
-        ))}
-      </div>
+    <div className="lg:w-3/4 w-full mx-auto gap-5 grid lg:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-4 mt-14">
+      {phoneCards.map((phone) => (
+        <PhoneCard key={phone.id} phone={phone} />
+      ))}
       <Button
         onClick={() => {
           setShow(!show);

@@ -15,9 +15,9 @@ export const setFavorite = (phone) => {
   toast.success("Book successfully added");
   localStorage.setItem("book", JSON.stringify(favData));
 };
-export const removeFavorite = (id) => {
+export const removeFavorite = (phone) => {
   const favData = getFavorite();
-  const remainingFav = favData.filter((b) => b.id !== id);
+  const remainingFav = favData.filter((b) => b.id !== phone.id);
   localStorage.setItem("book", JSON.stringify(remainingFav));
 };
 export const getCart = () => {
